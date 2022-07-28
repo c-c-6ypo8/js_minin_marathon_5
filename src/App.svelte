@@ -2,7 +2,14 @@
   import Gallery from './lib/01-cards/Gallery.svelte'
 </script>
 
-<Gallery />
+<main>
+  <Gallery />
+</main>
 
 <style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

@@ -10,7 +10,14 @@ body {
   margin: 0;
   background: #111;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+a,
+a:visited {
+  color: gray;
+}
+
+.comment {
+  color: #eee;
+  padding: 10px;
 }
