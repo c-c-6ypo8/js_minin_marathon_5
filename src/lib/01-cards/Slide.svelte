@@ -1,16 +1,17 @@
 <script>
-  import { selectedCar } from './stores.js'
-  export let car
-  const select = () => ($selectedCar = car.name)
+  import { selectedSlide } from './stores.js'
+  export let slide
+  const select = () =>
+    ($selectedSlide = $selectedSlide == slide.name ? '' : slide.name)
 </script>
 
 <div
   class="slide"
-  class:active={$selectedCar == car.name}
-  style="background-image: url('{car.pic}');"
+  class:active={$selectedSlide == slide.name}
+  style="background-image: url('{slide.pic}');"
   on:click={select}
 >
-  <h3>{car.name}</h3>
+  <h3>{slide.name}</h3>
 </div>
 
 <style>
