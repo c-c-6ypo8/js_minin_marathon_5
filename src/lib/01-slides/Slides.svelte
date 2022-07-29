@@ -1,7 +1,7 @@
 <script>
   import BackButton from '../BackButton.svelte'
   import Slide from './Slide.svelte'
-  import { slides } from './slides-stores'
+  import { slides } from './stores'
 </script>
 
 <div class="slides-page">

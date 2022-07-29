@@ -100,8 +100,8 @@
   }
 
   .hovered {
-    background-color: rgb(194, 250, 204);
-    outline: 5px solid rgb(146, 238, 146);
+    background-color: rgba(225, 255, 230, 0.719);
+    outline: 2px solid rgba(169, 240, 169, 0.582);
   }
 
   .task {
