@@ -1,23 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-/* * {
+* {
   box-sizing: border-box;
-} */
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Muli', sans-serif;
-  overflow: hidden;
-  margin: 0;
   background: #111;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 a,
 a:visited {
-  color: gray;
+  color: rgb(135, 182, 204);
 }
 
-.comment {
-  color: #eee;
-  padding: 10px;
+.no-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
