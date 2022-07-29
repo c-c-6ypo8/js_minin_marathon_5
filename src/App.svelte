@@ -2,11 +2,12 @@
   import { projects, currentPageId } from './lib/stores.js'
   import ProjectsList from './lib/ProjectsList.svelte'
   import Cards from './lib/01-slides/Slides.svelte'
+  import DragNDrop from './lib/02-drag&drop/DragNDrop.svelte'
 
   const pages = [
     { id: 0, title: '5 проектов за 5 дней', component: ProjectsList },
     { ...projects[0], component: Cards },
-    { ...projects[1], component: null },
+    { ...projects[1], component: DragNDrop },
   ]
 
   $: currentPage = pages[$currentPageId].component

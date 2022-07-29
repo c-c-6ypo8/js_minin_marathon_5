@@ -18,7 +18,7 @@
 <style>
   .arrow-left {
     font-size: 30px;
-    padding: 0 10px;
+    padding: 0 15px;
     cursor: pointer;
   }
 

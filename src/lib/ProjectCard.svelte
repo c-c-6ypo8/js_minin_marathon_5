@@ -29,15 +29,23 @@
   .card {
     border-radius: 20px;
     width: 100%;
-    border: 1px solid #777;
+    border: 1px solid rgb(44, 44, 44);
     padding: 20px;
-    color: #777;
+    color: rgb(155, 155, 155);
     margin: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     overflow: hidden;
+    background-color: rgb(43, 43, 43);
+    transition: all 0.1s ease-in;
+    gap: 15px;
+  }
+
+  .card:hover {
+    background-color: rgb(26, 39, 66);
+    border-color: rgb(26, 39, 66);
   }
 
   .card h3 {
@@ -48,6 +56,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 50%;
   }
 
   .pic {
@@ -56,13 +65,5 @@
     width: 323px;
     height: 200px;
     border-radius: 10px;
-  }
-
-  .description {
-    flex-basis: 50%;
-  }
-
-  .hidden {
-    display: none;
   }
 </style>

@@ -5,7 +5,7 @@
 </script>
 
 <div class="slides-page">
-  <BackButton theme="dark" on:page-load />
+  <BackButton theme="dark" />
   <div class="slides">
     {#each slides as slide}
       <Slide name={slide.name} pic={slide.pic} />
