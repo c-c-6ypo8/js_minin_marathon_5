@@ -1,5 +1,5 @@
 <script>
-  import { projects } from './lib/stores.js'
+  import { projects, currentPageId } from './lib/stores.js'
   import ProjectsList from './lib/ProjectsList.svelte'
   import Cards from './lib/01-slides/Slides.svelte'
 
@@ -8,15 +8,12 @@
     { ...projects[0], component: Cards },
     { ...projects[1], component: null },
   ]
-  let currentPage = pages[0].component
 
-  const loadPage = (e) => {
-    currentPage = pages[e.detail].component
-  }
+  $: currentPage = pages[$currentPageId].component
 </script>
 
 <main>
-  <svelte:component this={currentPage} on:page-load={loadPage} />
+  <svelte:component this={currentPage} />
 </main>
 
 <style>

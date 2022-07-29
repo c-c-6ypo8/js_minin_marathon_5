@@ -1,5 +1,5 @@
 <script>
-  import { selectedSlideName } from './stores.js'
+  import { selectedSlideName } from './slides-stores.js'
   export let name, pic
 
   const select = () =>

@@ -2,7 +2,7 @@
 import { writable } from 'svelte/store'
 
 import projectPic01 from './../assets/project-pic-01.jpg'
-import projectPic02 from './../assets/project-pic-01.jpg'
+// import projectPic02 from './../assets/project-pic-01.jpg'
 
 export const projects = [
   {
@@ -14,9 +14,10 @@ export const projects = [
   {
     id: 2,
     name: 'Drag & Drop',
-    pic: projectPic02,
+    pic: 'projectPic02',
     description: 'Мини-клон Trello с эффектом Drag & Drop',
   },
 ]
 
-export const selectedProjectId = writable(0)
+export const currentPageId = writable(0)
+export const selectedPageId = writable(0)

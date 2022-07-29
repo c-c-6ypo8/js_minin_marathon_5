@@ -6,11 +6,11 @@
 <main class="list-page">
   <article class="list">
     {#each projects as project}
-      <ProjectCard on:page-load {project} />
+      <ProjectCard {project} />
     {/each}
   </article>
   <div class="comment">
-    Проекты сделаны на Svelte, так как на Vanilla была скучно, а Svelte я прямо
+    Проекты сделаны на Svelte, так как на Vanilla было скучно, а Svelte я прямо
     сейчас изучаю. <br />Исходные коды можно посмотреть
     <a href="https://github.com/c-c-6ypo8/js_minin_marathon_5">здесь</a>.
   </div>

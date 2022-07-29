@@ -1,15 +1,19 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
+  import { currentPageId } from './stores.js'
   export let theme = 'light'
 
-  const dispatch = createEventDispatcher()
-
   const goToProjectsList = () => {
-    dispatch('page-load', 0)
+    $currentPageId = 0
   }
 </script>
 
-<div class="no-selection arrow-left {theme}" on:click={goToProjectsList}>←</div>
+<div
+  class="no-selection arrow-left {theme}"
+  on:click={goToProjectsList}
+  title="Назад"
+>
+  ←
+</div>
 
 <style>
   .arrow-left {

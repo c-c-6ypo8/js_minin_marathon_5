@@ -1,7 +1,7 @@
 <script>
   import BackButton from '../BackButton.svelte'
   import Slide from './Slide.svelte'
-  import { slides } from './stores'
+  import { slides } from './slides-stores'
 </script>
 
 <div class="slides-page">
@@ -19,7 +19,7 @@
     align-items: center;
     background: #111;
     gap: 20px;
-    margin: 20px 0;
+    margin: 10px 0;
   }
 
   .slides-page {
