@@ -31,7 +31,7 @@
     width: 100%;
     border: 1px solid rgb(44, 44, 44);
     padding: 20px;
-    color: rgb(155, 155, 155);
+    color: rgb(194, 194, 194);
     margin: 10px;
     cursor: pointer;
     display: flex;
@@ -44,8 +44,8 @@
   }
 
   .card:hover {
-    background-color: rgb(26, 39, 66);
-    border-color: rgb(26, 39, 66);
+    background-color: rgb(63, 63, 63);
+    border-color: rgb(65, 65, 65);
   }
 
   .card h3 {

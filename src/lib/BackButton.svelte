@@ -27,11 +27,11 @@
   }
 
   .light:hover {
-    color: rgb(63, 63, 63);
+    color: rgb(94, 94, 94);
   }
 
   .light:active {
-    color: rgb(116, 116, 116);
+    color: rgb(146, 146, 146);
   }
 
   .dark {

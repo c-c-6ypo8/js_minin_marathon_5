@@ -18,7 +18,7 @@
 
 <style>
   .comment {
-    color: rgb(190, 190, 190);
+    color: rgb(194, 194, 194);
     font-size: 14px;
     margin: 0 10px 10px;
     text-align: center;
