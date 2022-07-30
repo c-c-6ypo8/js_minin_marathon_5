@@ -1,6 +1,9 @@
 <script>
+  // @ts-nocheck
+
   import DraggedItem from './DraggedItem.svelte'
   import BackButton from '../BackButton.svelte'
+
   let startedItem = DraggedItem
   let processedItem = null
   let readyItem = null
