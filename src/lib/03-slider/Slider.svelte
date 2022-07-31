@@ -34,11 +34,7 @@
   <div class="backbutton-container">
     <BackButton theme="light" />
   </div>
-  <div
-    class="sidebar"
-    style="top:{sidebarPosition}vh;"
-    on:mousedown={shiftSidebar}
-  >
+  <div class="sidebar" style="top:{sidebarPosition}vh;" on:click={shiftSidebar}>
     {#each slides as slide}
       <SidePart
         title={slide.title}
@@ -48,7 +44,7 @@
       />
     {/each}
   </div>
-  <div class="mainbar" style="top:{mainbarPosition}vh;">
+  <div class="mainbar" style="top:{mainbarPosition}vh;" on:click={shiftMainbar}>
     {#each [...slides].reverse() as slide}
       <MainSlide url={slide.url} />
     {/each}
