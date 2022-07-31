@@ -1,10 +1,10 @@
 <script>
-  import { draggedItem, dropCell } from './stores.js'
+  import { draggedItem, dropCell, tasksByCategory } from './stores.js'
 
   export let categoryId
 
   const drop = () => {
-    $dropCell = { categoryId: categoryId }
+    if (isAvailable) $dropCell = { categoryId: categoryId }
     draggedOver = false
   }
 
@@ -12,12 +12,18 @@
 
   const enterDrag = () => (draggedOver = true)
   const leaveDrag = () => (draggedOver = false)
+
+  $: isAvailable =
+    $draggedItem &&
+    ($draggedItem.categoryId !== categoryId ||
+      ($tasksByCategory[categoryId].length > 1 &&
+        $tasksByCategory[categoryId].slice(-1)[0].id !== $draggedItem.id))
 </script>
 
 <div
   class="cell"
-  class:dragged-over={draggedOver}
-  class:drag-opened={$draggedItem}
+  class:dragged-over={draggedOver && isAvailable}
+  class:drag-available={isAvailable}
   on:dragover|preventDefault
   on:dragenter={enterDrag}
   on:dragleave={leaveDrag}
@@ -35,12 +41,13 @@
     flex-direction: column;
   }
 
-  .drag-opened {
+  .drag-available {
     border: 2px solid lightgray;
     border-style: dashed;
   }
 
   .dragged-over {
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(223, 240, 218);
+    border-color: rgb(187, 221, 176);
   }
 </style>

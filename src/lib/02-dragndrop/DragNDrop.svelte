@@ -12,7 +12,7 @@
   } from './stores'
 
   const removeItem = (item) => {
-    $tasks = $tasks?.filter((item) => item.id !== item.id)
+    $tasks = $tasks?.filter((task) => task.id !== item.id)
   }
 
   const insertItem = (item, categoryId) => {
@@ -35,11 +35,13 @@
   <div class="task-list">
     {#each categories as category}
       <div class="task-column">
-        <div class="no-selection task tasks-{category.id}">{category.name}</div>
+        <div class="no-selection task tasks-{category.id}">
+          {category.name} ({$tasksByCategory[category.id].length})
+        </div>
         {#each $tasksByCategory[category.id] as item}
           <svelte:component this={DraggedItem} {item} />
         {/each}
-        {#if $tasksByCategory[category.id].length < 1}
+        {#if $tasksByCategory[category.id].length !== 1 || $tasks.length > 1}
           <svelte:component this={DropCell} categoryId={category.id} />
         {/if}
       </div>
