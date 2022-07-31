@@ -3,25 +3,35 @@
   import DraggedItem from './DraggedItem.svelte'
   import DropCell from './DropCell.svelte'
   import BackButton from '../BackButton.svelte'
-  import { draggedItem, dropCell, categories, tasks, tasksById } from './stores'
+  import {
+    draggedItem,
+    dropCell,
+    categories,
+    tasks,
+    tasksByCategory,
+  } from './stores'
 
   $: {
-    console.log($tasksById)
+    console.log($tasksByCategory)
   }
 
-  const moveItem = () => {
-    // $tasks[$draggedItem.id] = $tasks[$draggedItem.categoryId].filter(
-    //   (item) => item.id !== $draggedItem.id,
-    // )
-    // console.log($tasks)
-    // $tasks[$dropCell.categoryId].push($draggedItem)
-    // console.log($tasks)
+  const removeItem = (item) => {
+    $tasks = $tasks?.filter((item) => item.id !== item.id)
+  }
 
+  const insertItem = (item, categoryId) => {
+    $tasks = [...$tasks, { ...item, categoryId: categoryId }]
+  }
+
+  const moveDraggedItem = () => {
+    console.log($draggedItem)
+    removeItem($draggedItem)
+    insertItem($draggedItem, $dropCell.categoryId)
     $draggedItem = $dropCell = undefined
   }
 
   $: if ($draggedItem && $dropCell) {
-    moveItem()
+    moveDraggedItem()
   }
 </script>
 
@@ -31,7 +41,7 @@
     {#each categories as category}
       <div class="task-column">
         <div class="no-selection task tasks-{category.id}">{category.name}</div>
-        {#each $tasks[category.id] as item}
+        {#each $tasksByCategory[category.id] as item}
           <svelte:component this={DraggedItem} {item} />
         {/each}
         <svelte:component this={DropCell} categoryId={category.id} />

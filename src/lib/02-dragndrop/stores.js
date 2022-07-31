@@ -10,27 +10,30 @@ export const categories = [
   { id: 'ready', name: 'Готовы' },
 ]
 
-export const tasks = writable({
-  started: [
-    {
-      id: 'j8aZPjEELGW9_XNX7OzB5',
-      text: 'Перетащи меня',
-    },
-  ],
-  processed: [],
-  ready: [],
-})
+export const categoriesIds = categories.map((category) => category.id)
 
-export const deleteItem = (id) => {}
+export const tasks = writable([
+  {
+    id: 'j8aZPjEELGW9_XNX7OzB5',
+    categoryId: 'started',
+    text: 'Перетащи меня',
+  },
+])
 
-export const addItem = (id) => {}
-
-export const tasksById = derived(tasks, ($tasks) => {
-  let newTasks = []
-  for (const category of Object.keys($tasks)) {
-    for (const task of $tasks[category]) {
-      newTasks.push({ ...task, categoryId: category })
-    }
+export const tasksByCategory = derived(tasks, ($tasks) => {
+  let tBC = { started: [], processed: [], ready: [] }
+  for (const task of $tasks) {
+    tBC[task.categoryId].push(task)
   }
-  return newTasks
+  return tBC
 })
+
+// export const tasksById = derived(tasks, ($tasks) => {
+//   let newTasks = []
+//   for (const category of Object.keys($tasks)) {
+//     for (const task of $tasks[category]) {
+//       newTasks.push({ ...task, categoryId: category })
+//     }
+//   }
+//   return newTasks
+// })

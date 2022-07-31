@@ -25,8 +25,6 @@
 
 <style>
   .cell {
-    box-shadow: 3px 4px 19px 2px rgba(34, 60, 80, 0.2);
-    border: 1px solid rgb(221, 221, 221);
     border-radius: 25px;
     padding: 10px 20px;
     height: 70px;

@@ -13,20 +13,19 @@ export const projects = [
     id: 2,
     name: 'Drag & Drop',
     pic: 'https://im.wampi.ru/2022/07/29/project-pic-02.png',
-    description:
-      'Мини-клон Trello с эффектом Drag & Drop. ПОКА UNDER CONSTRUCTION: переписывается с нуля для большего, нежели просто демонстрация функционала',
+    description: 'Мини-клон Trello с эффектом Drag & Drop.',
   },
   {
     id: 3,
     name: 'Слайдер',
     pic: 'https://ie.wampi.ru/2022/07/30/2022-07-30_13-45-55.jpg',
-    description: 'Впечатляющий слайдер картинок',
+    description: 'Впечатляющий слайдер картинок.',
   },
   {
     id: 4,
     name: 'Ховер-доска',
     pic: 'https://ic.wampi.ru/2022/07/31/project-pic-04.png',
-    description: 'Визуальная мини-игра с динамической генерацией контента',
+    description: 'Визуальная мини-игра с динамической генерацией контента.',
   },
 ]
 
