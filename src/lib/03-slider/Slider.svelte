@@ -21,13 +21,24 @@
       mainbarPosition - 100 < summaryShift ? 0 : (mainbarPosition -= 100)
     sidebarPosition = summaryShift - mainbarPosition
   }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') shiftSidebar()
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') shiftMainbar()
+  }
 </script>
+
+<svelte:window on:keydown={handleKeyDown} />
 
 <div class="slider-page">
   <div class="backbutton-container">
     <BackButton theme="light" />
   </div>
-  <div class="sidebar" style="top:{sidebarPosition}vh;">
+  <div
+    class="sidebar"
+    style="top:{sidebarPosition}vh;"
+    on:mousedown={shiftSidebar}
+  >
     {#each slides as slide}
       <SidePart
         title={slide.title}
