@@ -4,20 +4,17 @@
   export let item
 
   const startDrag = () => {
-    setTimeout(() => (dragged = true), 0)
-    $draggedItem = item
+    setTimeout(() => ($draggedItem = item), 0)
   }
 
   const endDrag = () => {
-    dragged = false
+    $draggedItem = undefined
   }
-
-  let dragged = false
 </script>
 
 <div
   class="item"
-  class:left-its-place={dragged}
+  class:left-its-place={$draggedItem}
   draggable="true"
   on:dragstart={startDrag}
   on:dragend={endDrag}

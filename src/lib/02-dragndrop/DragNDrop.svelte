@@ -11,10 +11,6 @@
     tasksByCategory,
   } from './stores'
 
-  $: {
-    console.log($tasksByCategory)
-  }
-
   const removeItem = (item) => {
     $tasks = $tasks?.filter((item) => item.id !== item.id)
   }
@@ -24,7 +20,6 @@
   }
 
   const moveDraggedItem = () => {
-    console.log($draggedItem)
     removeItem($draggedItem)
     insertItem($draggedItem, $dropCell.categoryId)
     $draggedItem = $dropCell = undefined
@@ -44,7 +39,9 @@
         {#each $tasksByCategory[category.id] as item}
           <svelte:component this={DraggedItem} {item} />
         {/each}
-        <svelte:component this={DropCell} categoryId={category.id} />
+        {#if $tasksByCategory[category.id].length < 1}
+          <svelte:component this={DropCell} categoryId={category.id} />
+        {/if}
       </div>
     {/each}
   </div>

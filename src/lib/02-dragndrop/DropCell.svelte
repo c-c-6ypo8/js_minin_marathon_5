@@ -1,5 +1,5 @@
 <script>
-  import { dropCell } from './stores.js'
+  import { draggedItem, dropCell } from './stores.js'
 
   export let categoryId
 
@@ -17,6 +17,7 @@
 <div
   class="cell"
   class:dragged-over={draggedOver}
+  class:drag-opened={$draggedItem}
   on:dragover|preventDefault
   on:dragenter={enterDrag}
   on:dragleave={leaveDrag}
@@ -34,7 +35,12 @@
     flex-direction: column;
   }
 
+  .drag-opened {
+    border: 2px solid lightgray;
+    border-style: dashed;
+  }
+
   .dragged-over {
-    border: 3px solid green;
+    background-color: rgb(231, 231, 231);
   }
 </style>
