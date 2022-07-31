@@ -1,73 +1,42 @@
 <script>
   // @ts-nocheck
-
   import DraggedItem from './DraggedItem.svelte'
+  import DropCell from './DropCell.svelte'
   import BackButton from '../BackButton.svelte'
+  import { draggedItem, dropCell, categories, tasks, tasksById } from './stores'
 
-  let startedItem = DraggedItem
-  let processedItem = null
-  let readyItem = null
-  let draggedItemProps = { text: 'Перетащи меня' }
-
-  let readyItemHovered,
-    startedItemHovered,
-    processedItemHovered = false
-
-  const moveItemToProcessed = () => {
-    startedItem = null
-    readyItem = null
-    processedItem = DraggedItem
+  $: {
+    console.log($tasksById)
   }
-  const moveItemToReady = () => {
-    startedItem = null
-    readyItem = DraggedItem
-    processedItem = null
+
+  const moveItem = () => {
+    // $tasks[$draggedItem.id] = $tasks[$draggedItem.categoryId].filter(
+    //   (item) => item.id !== $draggedItem.id,
+    // )
+    // console.log($tasks)
+    // $tasks[$dropCell.categoryId].push($draggedItem)
+    // console.log($tasks)
+
+    $draggedItem = $dropCell = undefined
   }
-  const moveItemToStarted = () => {
-    startedItem = DraggedItem
-    readyItem = null
-    processedItem = null
+
+  $: if ($draggedItem && $dropCell) {
+    moveItem()
   }
 </script>
 
 <div class="dragndrop-page">
   <BackButton theme="light" />
-  <div class="task-list-container">
-    <div class="task-list">
-      <div class="task task-start">Начать</div>
-      <div class="task task-in-process">В процессе</div>
-      <div class="task task-ready">Готовы</div>
-      <div
-        class="place"
-        class:hovered={startedItemHovered && startedItem === null}
-        on:dragenter={() => (startedItemHovered = true)}
-        on:dragleave={() => (startedItemHovered = false)}
-        on:dragover|preventDefault
-        on:drop={moveItemToStarted}
-      >
-        <svelte:component this={startedItem} {...draggedItemProps} />
+  <div class="task-list">
+    {#each categories as category}
+      <div class="task-column">
+        <div class="no-selection task tasks-{category.id}">{category.name}</div>
+        {#each $tasks[category.id] as item}
+          <svelte:component this={DraggedItem} {item} />
+        {/each}
+        <svelte:component this={DropCell} categoryId={category.id} />
       </div>
-      <div
-        class="place"
-        class:hovered={processedItemHovered && processedItem === null}
-        on:dragenter={() => (processedItemHovered = true)}
-        on:dragleave={() => (processedItemHovered = false)}
-        on:dragover|preventDefault
-        on:drop={moveItemToProcessed}
-      >
-        <svelte:component this={processedItem} {...draggedItemProps} />
-      </div>
-      <div
-        class="place"
-        class:hovered={readyItemHovered && readyItem === null}
-        on:dragenter={() => (readyItemHovered = true)}
-        on:dragleave={() => (readyItemHovered = false)}
-        on:dragover|preventDefault
-        on:drop={moveItemToReady}
-      >
-        <svelte:component this={readyItem} {...draggedItemProps} />
-      </div>
-    </div>
+    {/each}
   </div>
 </div>
 
@@ -79,27 +48,27 @@
     height: 100vh;
   }
 
-  .task-list-container {
-    display: flex;
-    justify-content: center;
-  }
-
   .task-list {
-    width: 700px;
     margin-top: 50px;
     display: flex;
-    gap: 40px 50px;
+    gap: 60px;
     flex-wrap: wrap;
     justify-content: center;
     justify-items: center;
   }
 
-  .task,
-  .place {
+  .task-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .task {
     border-radius: 26px;
-    width: 140px;
+    width: 170px;
     text-align: center;
-    flex-basis: 25%;
+    padding: 15px 25px;
+    color: var(--back-color);
   }
 
   .hovered {
@@ -107,12 +76,7 @@
     outline: 2px solid rgba(169, 240, 169, 0.582);
   }
 
-  .task {
-    padding: 15px 25px;
-    color: var(--back-color);
-  }
-
-  .task-start {
+  .tasks-started {
     background: rgb(2, 0, 36);
     background: linear-gradient(
       90deg,
@@ -122,7 +86,7 @@
     );
   }
 
-  .task-in-process {
+  .tasks-processed {
     background: rgb(50, 168, 75);
     background: linear-gradient(
       90deg,
@@ -131,7 +95,7 @@
     );
   }
 
-  .task-ready {
+  .tasks-ready {
     background: rgb(105, 110, 255);
     background: linear-gradient(
       90deg,

@@ -1,25 +1,28 @@
 <script>
-  export let text = ''
+  import { draggedItem } from './stores.js'
+
+  export let item
+
   const startDrag = () => {
-    setTimeout(() => (itemIsDragged = true), 0)
+    setTimeout(() => (dragged = true), 0)
+    $draggedItem = item
   }
 
   const endDrag = () => {
-    itemIsDragged = false
+    dragged = false
   }
 
-  let itemIsDragged = false
-  let position
+  let dragged = false
 </script>
 
 <div
   class="item"
-  class:left-its-place={itemIsDragged}
+  class:left-its-place={dragged}
   draggable="true"
   on:dragstart={startDrag}
   on:dragend={endDrag}
 >
-  {text}
+  {item.text}
 </div>
 
 <style>
@@ -33,6 +36,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
   }
 
   .left-its-place {
