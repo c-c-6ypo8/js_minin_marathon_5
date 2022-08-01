@@ -32,7 +32,7 @@ export const projects = [
   {
     id: 5,
     name: 'Игра',
-    pic: 'https://ic.wampi.ru/2022/07/31/project-pic-04.png',
+    pic: 'https://ie.wampi.ru/2022/08/01/project-pic-05.png',
     description: 'Игра для тренировки AIM (меткости) с тремя экранами.',
   },
 ]
