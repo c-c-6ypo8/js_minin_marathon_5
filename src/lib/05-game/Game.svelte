@@ -94,6 +94,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    transition: top 0.5s ease-out;
   }
 
   .start {
@@ -119,7 +120,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: margin 0.5s ease-out;
     background: linear-gradient(90deg, #29323c 0%, #485563 100%);
     position: absolute;
     height: 100vh;
