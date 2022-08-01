@@ -54,6 +54,9 @@
         <li>
           <TimeButton on:click={startGame} time="30" />
         </li>
+        <li>
+          <TimeButton on:click={startGame} time="60" />
+        </li>
       </ul>
     </div>
     <div class="screen-game">
