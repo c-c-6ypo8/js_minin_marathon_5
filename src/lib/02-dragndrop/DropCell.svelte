@@ -4,7 +4,7 @@
   export let categoryId
 
   const drop = () => {
-    if (isAvailable) $dropCell = { categoryId: categoryId }
+    if (available) $dropCell = { categoryId: categoryId }
     draggedOver = false
   }
 
@@ -13,7 +13,7 @@
   const enterDrag = () => (draggedOver = true)
   const leaveDrag = () => (draggedOver = false)
 
-  $: isAvailable =
+  $: available =
     $draggedItem &&
     ($draggedItem.categoryId !== categoryId ||
       ($tasksByCategory[categoryId].length > 1 &&
@@ -22,8 +22,8 @@
 
 <div
   class="cell"
-  class:dragged-over={draggedOver && isAvailable}
-  class:drag-available={isAvailable}
+  class:dragged-over={draggedOver && available}
+  class:drag-available={available}
   on:dragover|preventDefault
   on:dragenter={enterDrag}
   on:dragleave={leaveDrag}
@@ -48,6 +48,6 @@
 
   .dragged-over {
     background-color: rgb(223, 240, 218);
-    border-color: rgb(187, 221, 176);
+    border-color: rgb(191, 223, 180);
   }
 </style>

@@ -29,6 +29,12 @@ export const projects = [
     pic: 'https://ic.wampi.ru/2022/07/31/project-pic-04.png',
     description: 'Визуальная мини-игра с динамической генерацией контента.',
   },
+  {
+    id: 5,
+    name: 'Игра',
+    pic: 'https://ic.wampi.ru/2022/07/31/project-pic-04.png',
+    description: 'Игра для тренировки AIM (меткости) с тремя экранами.',
+  },
 ]
 
 export const currentPageId = writable(0)

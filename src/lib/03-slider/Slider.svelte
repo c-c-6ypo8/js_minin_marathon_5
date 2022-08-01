@@ -123,11 +123,4 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-
-  .backbutton-container {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 100;
-  }
 </style>

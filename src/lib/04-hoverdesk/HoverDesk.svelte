@@ -33,9 +33,4 @@
     max-width: 500px;
     gap: 4px;
   }
-  .backbutton-container {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
 </style>

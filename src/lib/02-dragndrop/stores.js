@@ -37,13 +37,3 @@ export const tasksByCategory = derived(tasks, ($tasks) => {
   }
   return tBC
 })
-
-// export const tasksById = derived(tasks, ($tasks) => {
-//   let newTasks = []
-//   for (const category of Object.keys($tasks)) {
-//     for (const task of $tasks[category]) {
-//       newTasks.push({ ...task, categoryId: category })
-//     }
-//   }
-//   return newTasks
-// })

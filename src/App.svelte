@@ -5,6 +5,7 @@
   import DragNDrop from './lib/02-dragndrop/DragNDrop.svelte'
   import Slider from './lib/03-slider/Slider.svelte'
   import HoverDesk from './lib/04-hoverdesk/HoverDesk.svelte'
+  import Game from './lib/05-game/Game.svelte'
 
   const pages = [
     { id: 0, name: '5 проектов за 5 дней', component: ProjectsList },
@@ -12,6 +13,7 @@
     { ...projects[1], component: DragNDrop },
     { ...projects[2], component: Slider },
     { ...projects[3], component: HoverDesk },
+    { ...projects[4], component: Game },
   ]
 
   let currentPage
@@ -24,16 +26,4 @@
   $: changePage($currentPageId)
 </script>
 
-<main>
-  <svelte:component this={currentPage} />
-</main>
-
-<style>
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-</style>
+<svelte:component this={currentPage} />
