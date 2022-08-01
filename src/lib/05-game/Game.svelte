@@ -134,6 +134,10 @@
     top: 200vh;
   }
 
+  .screen-game h3 {
+    margin-bottom: 20px;
+  }
+
   .time-list {
     display: flex;
     flex-wrap: wrap;
@@ -151,7 +155,6 @@
   }
 
   .board {
-    margin: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
