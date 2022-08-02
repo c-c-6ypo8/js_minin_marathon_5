@@ -11,17 +11,9 @@
     tasksByCategory,
   } from './stores'
 
-  const removeItem = (item) => {
-    $tasks = $tasks?.filter((task) => task.id !== item.id)
-  }
-
-  const insertItem = (item, categoryId) => {
-    $tasks = [...$tasks, { ...item, categoryId: categoryId }]
-  }
-
   const moveDraggedItem = () => {
-    removeItem($draggedItem)
-    insertItem($draggedItem, $dropCell.categoryId)
+    tasks.remove($draggedItem)
+    tasks.insert($draggedItem, $dropCell.categoryId)
     $draggedItem = $dropCell = undefined
   }
 

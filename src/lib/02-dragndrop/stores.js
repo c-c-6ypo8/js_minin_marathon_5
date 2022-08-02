@@ -12,7 +12,20 @@ export const categories = [
 
 export const categoriesIds = categories.map((category) => category.id)
 
-export const tasks = writable([
+const createTasksStore = (initialValue) => {
+  const { subscribe, set, update } = writable([...initialValue])
+  return {
+    subscribe,
+    insert: (task, categoryId) => {
+      update((tasks) => [...tasks, { ...task, categoryId: categoryId }])
+    },
+    remove: (taskToRemove) => {
+      update((tasks) => tasks.filter((task) => task.id !== taskToRemove.id))
+    },
+  }
+}
+
+export const tasks = createTasksStore([
   {
     id: 'j8aZPjEELGW9_XNX7OzB5',
     categoryId: 'started',
