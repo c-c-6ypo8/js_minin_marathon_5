@@ -3,13 +3,18 @@
 
   import { score, circleColors } from './stores.js'
   import { getRandomNumber } from '../vendor/random'
+  import { scale } from 'svelte/transition'
+  import { cubicOut } from 'svelte/easing'
 
-  export let parent
+  export { parent }
+
+  let parent
 
   let { width: parentWidth, height: parentHeight } =
     parent.getBoundingClientRect()
 
   let diameter, x, y, color1, color2, color3
+
   const border = 2
 
   const setPosition = () => {
@@ -40,16 +45,20 @@
   setPosition()
 </script>
 
-<div
-  class="circle no-selection"
-  style="
-  width:{diameter}px;
-  height:{diameter}px;
-  top:{y}px;
-  left:{x}px;
-  background: linear-gradient(90deg, {color1} 0%, {color2} 47%, {color3} 100%);"
-  on:click={handleClick}
-/>
+{#key diameter}
+  <div
+    class="circle no-selection"
+    style:width={diameter + 'px'}
+    style:height={diameter + 'px'}
+    style:top={y + 'px'}
+    style:left={x + 'px'}
+    style:background={`linear-gradient(90deg, ${color1} 0%, 
+                                              ${color2} 47%, 
+                                              ${color3} 100%)`}
+    on:click={handleClick}
+    transition:scale={{ duration: 300, easing: cubicOut }}
+  />
+{/key}
 
 <style>
   .circle {

@@ -1,6 +1,9 @@
 <script>
   import { currentPageId } from './stores.js'
-  export let theme = 'light'
+
+  export { theme }
+
+  let theme = 'light'
 
   const goToProjectsList = () => {
     $currentPageId = 0

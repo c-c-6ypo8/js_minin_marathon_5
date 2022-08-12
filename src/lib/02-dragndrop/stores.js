@@ -1,19 +1,28 @@
 // @ts-nocheck
 import { writable, derived } from 'svelte/store'
 
-export const draggedItem = writable()
-export const dropCell = writable()
+export {
+  draggedItem,
+  dropCell,
+  categories,
+  categoriesIds,
+  tasks,
+  tasksByCategory,
+}
 
-export const categories = [
+const draggedItem = writable()
+const dropCell = writable()
+
+const categories = [
   { id: 'started', name: 'Начать' },
   { id: 'processed', name: 'В процессе' },
   { id: 'ready', name: 'Готовы' },
 ]
 
-export const categoriesIds = categories.map((category) => category.id)
+const categoriesIds = categories.map((category) => category.id)
 
 const createTasksStore = (initialValue) => {
-  const { subscribe, set, update } = writable([...initialValue])
+  const { subscribe, update } = writable([...initialValue])
   return {
     subscribe,
     insert: (task, categoryId) => {
@@ -25,7 +34,7 @@ const createTasksStore = (initialValue) => {
   }
 }
 
-export const tasks = createTasksStore([
+const tasks = createTasksStore([
   {
     id: 'j8aZPjEELGW9_XNX7OzB5',
     categoryId: 'started',
@@ -43,7 +52,7 @@ export const tasks = createTasksStore([
   },
 ])
 
-export const tasksByCategory = derived(tasks, ($tasks) => {
+const tasksByCategory = derived(tasks, ($tasks) => {
   let tBC = { started: [], processed: [], ready: [] }
   for (const task of $tasks) {
     tBC[task.categoryId].push(task)

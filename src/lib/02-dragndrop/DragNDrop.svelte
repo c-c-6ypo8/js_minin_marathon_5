@@ -1,5 +1,6 @@
 <script>
   // @ts-nocheck
+  import { flip } from 'svelte/animate'
   import DraggedItem from './DraggedItem.svelte'
   import DropCell from './DropCell.svelte'
   import BackButton from '../BackButton.svelte'
@@ -17,9 +18,7 @@
     $draggedItem = $dropCell = undefined
   }
 
-  $: if ($draggedItem && $dropCell) {
-    moveDraggedItem()
-  }
+  $: if ($draggedItem && $dropCell) moveDraggedItem()
 </script>
 
 <div class="dragndrop-page">
@@ -30,8 +29,10 @@
         <div class="no-selection task tasks-{category.id}">
           {category.name} ({$tasksByCategory[category.id].length})
         </div>
-        {#each $tasksByCategory[category.id] as item}
-          <svelte:component this={DraggedItem} {item} />
+        {#each $tasksByCategory[category.id] as item (item.id)}
+          <div animate:flip={{ duration: 300 }}>
+            <DraggedItem {item} />
+          </div>
         {/each}
         {#if $tasksByCategory[category.id].length !== 1 || $tasks.length > 1}
           <svelte:component this={DropCell} categoryId={category.id} />

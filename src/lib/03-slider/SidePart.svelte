@@ -1,5 +1,4 @@
 <script>
-  import BackButton from '../BackButton.svelte'
   export let title, description, color1, color2
 </script>
 

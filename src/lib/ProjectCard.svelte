@@ -2,7 +2,10 @@
   // @ts-nocheck
   import { currentPageId, selectedPageId } from './stores.js'
 
-  export let project
+  export { project }
+
+  let project
+
   const { id, name, pic, description } = project
 
   const selectThisPage = () =>

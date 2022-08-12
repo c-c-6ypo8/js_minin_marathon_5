@@ -27,7 +27,8 @@
 
 <div
   class="element"
-  style="background-color:{color}; box-shadow:{shadow};"
+  style:background-color={color}
+  style:box-shadow={shadow}
   on:mouseenter={setEffect}
   on:mouseleave={unSetEffect}
 />

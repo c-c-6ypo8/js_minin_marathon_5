@@ -1,8 +1,10 @@
 import { writable } from 'svelte/store'
 
-export const selectedSlideName = writable('')
+export { selectedSlideName, slides }
 
-export const slides = [
+const selectedSlideName = writable('')
+
+const slides = [
   {
     name: 'Buffalo',
     pic: 'https://images.unsplash.com/photo-1658847344712-7667fc61a597?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',

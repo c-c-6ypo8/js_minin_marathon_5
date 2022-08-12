@@ -1,6 +1,8 @@
 // @ts-nocheck
 
-export const slides = [
+export { slides }
+
+const slides = [
   {
     title: 'Живописный мост',
     description: 'Москва, Россия',

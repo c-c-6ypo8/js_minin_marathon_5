@@ -2,9 +2,11 @@
   import { createEventDispatcher } from 'svelte'
   import { gameTime } from './stores.js'
 
+  export { time }
+
   const dispatch = createEventDispatcher()
 
-  export let time = 0
+  let time = 0
 
   const setTime = () => {
     $gameTime = time

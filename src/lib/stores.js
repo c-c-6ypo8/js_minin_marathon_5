@@ -1,7 +1,9 @@
 // @ts-nocheck
 import { writable } from 'svelte/store'
 
-export const projects = [
+export { projects, currentPageId, selectedPageId }
+
+const projects = [
   {
     id: 1,
     name: 'Карточки',
@@ -37,5 +39,5 @@ export const projects = [
   },
 ]
 
-export const currentPageId = writable(0)
-export const selectedPageId = writable(0)
+const currentPageId = writable(0)
+const selectedPageId = writable(0)

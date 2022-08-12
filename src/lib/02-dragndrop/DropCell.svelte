@@ -1,7 +1,9 @@
 <script>
   import { draggedItem, dropCell, tasksByCategory } from './stores.js'
 
-  export let categoryId
+  export { categoryId }
+
+  let categoryId
 
   const drop = () => {
     if (available) $dropCell = { categoryId: categoryId }

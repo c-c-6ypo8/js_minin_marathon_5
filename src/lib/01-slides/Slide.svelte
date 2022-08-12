@@ -1,6 +1,9 @@
 <script>
   import { selectedSlideName } from './stores.js'
-  export let name, pic
+
+  export { name, pic }
+
+  let name, pic
 
   const select = () =>
     ($selectedSlideName = $selectedSlideName == name ? '' : name)

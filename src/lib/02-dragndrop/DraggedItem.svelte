@@ -1,7 +1,9 @@
 <script>
   import { draggedItem } from './stores.js'
 
-  export let item
+  export { item }
+
+  let item
 
   const startDrag = () => {
     setTimeout(() => ($draggedItem = item), 0)
@@ -34,6 +36,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    background-color: var(--back-color);
   }
 
   .left-its-place {
